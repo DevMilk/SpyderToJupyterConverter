@@ -1,5 +1,5 @@
 # SpyderToJupyterConverter
- C program to convert Spyder Python Script/Notebook to Jupyter Notebook in miliseconds.
+ C program to convert Spyder Python Script/Notebook to Jupyter Notebook in milliseconds.
 
 ---
 ## Run
