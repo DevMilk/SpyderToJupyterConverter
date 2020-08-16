@@ -3,8 +3,9 @@
 #include <string.h>
 #define MAX_LINE_LENGTH 500
 #define MAX_FILE_NAME_LENGTH 200
-#define IS_SPECIAL_CHARACTER(ch) !(((ch) >= 'a' && (ch) <= 'z') || ((ch) >= 'A' && (ch) <= 'Z') || (ch) >= '0' && (ch) <= '9')
-  
+
+/*Created By DevMilk*/
+
   //Prefix for markdown type cells
   char markdownprefix[] = "{\n \
 \"cell_type\": \"markdown\",\n \
