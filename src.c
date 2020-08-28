@@ -109,7 +109,7 @@ int main(int argc, char* argv[]) {
   
   //Flag for checking start of cell
   short isCellStart = 1;
-  
+  short isMarkdownAtEnd = 0;
   //Strings for keeping line and new Jupyter Notebook's name  
   char line[MAX_LINE_LENGTH],newFileName[MAX_FILE_NAME_LENGTH];
   
@@ -149,6 +149,7 @@ int main(int argc, char* argv[]) {
       if(k>4 ){
       	line[k-1]='\0';
         sprintf(jupyter, "%s%s\"%s\"]\n},\n", jupyter, markdownprefix, line+startMarkDownText);
+        isMarkdownAtEnd = isMarkdownAtEnd | 1;
       }
       // set isCellNew to 1 
       isCellStart = isCellStart | 1;
@@ -167,6 +168,8 @@ int main(int argc, char* argv[]) {
         
       //Add new line  
       sprintf(jupyter, "%s\"%s\"", jupyter, processLine(line));
+      isMarkdownAtEnd ^= isMarkdownAtEnd;
+    
     }
 
   }
@@ -175,7 +178,8 @@ int main(int argc, char* argv[]) {
   fclose(spyderNotebook);	
   
   //Close cells JSON array  
-  strcat(jupyter, "]\n}\n");
+  if(!isMarkdownAtEnd)
+  	strcat(jupyter, "]\n}\n");
   
   //Append ending prefix
   strcat(jupyter, end);
